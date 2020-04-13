@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home - Design System Playground</title>
+    <script src="/cdn/js/polyfills/ie11CustomProperties.js"></script>
+    <link href="/cdn/css/design.css" rel="stylesheet" type="text/css">
+    <script src="/cdn/js/core.js"></script>
+    <script defer src="/cdn/js/common.js"></script>
+</head>
+
+<body>
+
+    <nav class="fixed w-full">
+        <ul>
+            <ol><a href="/">Home</a></ol>
+            <ol><a href="/deep/link?via=main-nav">Deep Link</a></ol>
+            <ol><a href="/about">About</a></ol>
+            <ol class="loading-spinner">
+                <span>Loading...</span>
+            </ol>
+        </ul>
+    </nav>
+
+    <x-cover class="bg:primary-highlight">
+        <div class="centered">
+            <h1>An important heading</h1>
+            <h2>A clever sub heading</h2>
+        </div>
+    </x-cover>
+
+    <x-center>
+        <x-box>
+            Some interesting information
+            <button class="btn btn-primary">Click Me!</button>
+
+            <x-stack>
+                <div>
+                    Stack 1
+                </div>
+                <div>
+                    Stack 2
+                </div>
+            </x-stack>
+
+            <x-sidebar>
+                <div>
+                    <div class="min-w:measure/4">
+                        Sidebar
+                    </div>
+                    <div>
+                        Sidebar Content with <a href="#">some link</a>.
+                        <br>
+                        HTML5 routing
+                        <a href="#top">To top</a>.
+                        <br>
+                        <a href="/about">app/about</a>
+                        <br>
+                        <a href="/about" target="_self">app/about/index.html (hard load)</a>
+                        <br>
+                        <a href="/deep/link?via=content">app/deep/link</a>
+                        <br>
+                        <a href="/index.html" target="_self">app/index.html (hard load)</a>
+                        <br>
+                        Hashrouting
+                        <br>
+                        <a href="#/about">app/#/about</a>
+                        <br>
+                        <a href="#/deep/link?via=main-nav">app/#/deep/link?via=main-nav</a>
+                    </div>
+                </div>
+            </x-sidebar>
+
+        </x-box>
+    </x-center>
+
+    <div style="background: #333; color: white">
+        <x-center>
+            <x-box>
+
+                Some footer content
+
+            </x-box>
+        </x-center>
+    </div>
+
+    <script>
+
+        Core.use(function (Y) {
+            const window = Y.env.window;
+            const document = Y.env.document;
+            const subs = [];
+
+            Y.log("loaded /", Y);
+            window.SOME_GLOBAL = "SOME_GLOBAL";
+
+            subs.push(Y.on("page.load.initiated", function (evt) {
+                document.querySelector(".loading-spinner").style.display = "block";
+            }));
+
+            subs.push(Y.on("page.load.finished", function (evt) {
+                document.querySelector(".loading-spinner").style.display = "none";
+            }));
+
+            subs.push(Y.on("page.unload.initiated", function (evt) {
+                subs.forEach(function (sub) {
+                    sub();
+                });
+            }));
+        });
+
+    </script>
+</body>
+
+</html>

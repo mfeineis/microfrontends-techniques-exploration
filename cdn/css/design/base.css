@@ -1,0 +1,130 @@
+
+:root {
+    font-size: calc(1rem + 0.5vw);
+
+    /* --measure: 60ch; */
+    --measure: 80ch;
+    /* --ratio: 1.61803398875; */
+    --ratio: 1.5;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+
+    --primary: #0000ff;
+    --primary-highlight: #0088ff;
+
+    --border-radius: 4px;
+    --border-thin: 1px;
+}
+
+* {
+    max-width: var(--measure);
+}
+
+body {
+    margin: 0;
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+    max-width: none;
+}
+
+.max-w\:measure {
+    max-width: var(--measure);
+}
+.max-w\:measure\/2 {
+    max-width: calc(var(--measure) / 2);
+}
+
+.min-w\:measure\/4 {
+    min-width: calc(var(--measure) / 4);
+}
+
+.bg\:primary-highlight {
+    background: var(--primary-highlight);
+}
+
+
+x-center {
+    display: block;
+    box-sizing: content-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--measure);
+}
+
+x-box {
+    display: block;
+    padding: var(--s1);
+    border-width: var(--border-thin);
+    outline: var(--border-thin) solid transparent;
+    outline-offset: calc(var(--border-thin)*-1);
+}
+
+x-cover {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    min-height: calc(100vh - 2 * var(--s1));
+    padding: var(--s1);
+}
+x-cover > * {
+    margin-bottom: var(--s1);
+    margin-top: var(--s1);
+}
+x-cover > :first-child:not(.centered) {
+    margin-top: 0;
+}
+x-cover > :last-child:not(.centered) {
+    margin-bottom: 0;
+}
+x-cover > .centered {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+x-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+x-stack > * + * {
+    margin-top: var(--s1);
+}
+
+x-sidebar > * {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+x-sidebar > * > * {
+    flex-grow: 1;
+}
+x-sidebar > * > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: 50%;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.w-full {
+    width: 100%;
+}
