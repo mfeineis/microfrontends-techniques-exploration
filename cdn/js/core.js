@@ -1,5 +1,7 @@
-(function (NAME, VERSION, window, document, factory) {
+(function (NAME, VERSION, window, factory) {
     "use strict";
+
+    const document = window.document;
 
     function expose(host, name, it) {
         host[name] = Object.freeze(it);
@@ -20,7 +22,7 @@
 
     expose(window, NAME, factory(VERSION, window, document, Object.freeze, expose));
 
-}("Core", "0.1.0", self, document, function (VERSION, window, document, Object_freeze, expose) {
+}("Core", "0.1.1", self, function (VERSION, window, document, Object_freeze, expose) {
     const XMLHttpRequest = window.XMLHttpRequest;
 
     // Our baseline is IE11 compatible ES5 environments, no need for dependencies
