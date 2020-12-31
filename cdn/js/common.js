@@ -248,3 +248,43 @@ Core.use(function (Y) {
         // request(route.entry, { responseType: "document" }
     });
 });
+
+// <ca-...> elements declaration
+Core.use(function (Y) {
+    const customElements = Y.env.window.customElements;
+
+    customElements.define("ca-load", class extends HTMLElement {
+        static get observedAttributes() {
+            return ["elements"];
+        }
+        constructor() {
+            super();
+            this._connected = false;
+            this._lookup = {};
+        }
+        connectedCallback() {
+            this._connected = true;
+            for (let element in this._lookup) {
+                this._load(element);
+            }
+        }
+        disconnectedCallback() {
+            delete this._connected;
+            delete this._lookup;
+        }
+        attributeChangedCallback(name, _, newValue) {
+            for (let element of newValue.split(" ")) {
+                this._lookup[element] = element;
+                if (this._connected) {
+                    this._load(element);
+                }
+            }
+        }
+        _load(element) {
+            if (customElements.get(element)) {
+                return;
+            }
+            Y.log("loading", element);
+        }
+    });
+});
