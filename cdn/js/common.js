@@ -166,7 +166,7 @@ Core.use(function (Y) {
             let node;
 
             if (original.tagName.toUpperCase() === "SCRIPT") {
-                // https://stackoverflow.com/questions/28771542/why-dont-clonenode-script-tags-execute 
+                // https://stackoverflow.com/questions/28771542/why-dont-clonenode-script-tags-execute
                 node = document.createElement('script');
                 node.async = original.async;
                 node.crossOrigin = original.crossOrigin;
