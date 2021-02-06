@@ -7,11 +7,12 @@
     <script src="/cdn/js/polyfills/ie11CustomProperties.js"></script>
     <link href="/cdn/css/design.css" rel="stylesheet" type="text/css">
     <script src="/cdn/js/core.js"></script>
-    <script src="/cdn/js/common.js"></script>
+    <script src="/cdn/js/elements/ca-import.js"></script>
 </head>
 
 <body>
-    <ca-load elements="ca-box ca-center ca-cover ca-sidebar ca-stack"></ca-load>
+    <ca-import elements="ca-routing"></ca-import>
+    <ca-routing></ca-routing>
 
     <nav class="fixed w-full">
         <ul>
@@ -24,94 +25,33 @@
         </ul>
     </nav>
 
-    <x-cover class="bg:primary-highlight">
-        <div class="centered">
+    <ca-import elements="ca-cover"></ca-import>
+    <ca-cover bg-primary>
+        <div slot="center">
             <h1>An important heading</h1>
             <h2>A clever sub heading</h2>
         </div>
-    </x-cover>
+    </ca-cover>
+    <ca-cover>
+        <h2>Another Cover Heading</h2>
+        <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur metus eget quam malesuada, vel laoreet ex pretium. Integer quis pretium nulla, at mattis dolor. Aenean in ipsum sed augue placerat tristique. Maecenas et pharetra diam. Sed justo nisl, viverra non felis at, posuere cursus arcu. Curabitur hendrerit, elit sollicitudin vulputate mattis, mauris eros lacinia turpis, vel pharetra mauris magna gravida ex. Curabitur nec diam risus. Sed sed felis in ex consectetur volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo, elit eget iaculis tincidunt, tellus metus blandit nisi, eget rhoncus ipsum augue ac libero. Fusce iaculis urna sit amet vulputate semper. Donec in orci imperdiet, tincidunt turpis a, facilisis elit.
+        </p>
+        <p>
+        Sed varius lectus nisi, eu efficitur felis dictum at. Etiam ornare leo sed odio semper varius. Pellentesque vitae sodales sapien. Nulla ligula orci, hendrerit in interdum et, tincidunt sed libero. Quisque euismod sapien arcu, sit amet fringilla arcu ultricies et. Cras consequat metus nec nibh mollis, in imperdiet elit semper. Nulla sit amet lorem lacus. Fusce pulvinar, purus quis condimentum suscipit, leo lectus vehicula nisl, sed finibus felis sapien eget felis. Sed luctus justo at purus laoreet volutpat. Etiam nibh nulla, volutpat eget tempus id, varius et enim. Etiam iaculis commodo finibus. Praesent libero libero, congue sit amet tempor non, ullamcorper quis odio. Integer et leo a erat tincidunt rutrum id non nisi. Aliquam fermentum, dui at hendrerit porttitor, nibh quam vehicula elit, ut ultrices erat neque non nunc.
+        </p>
+        <p>
+        Morbi interdum accumsan ipsum id elementum. Etiam bibendum, ex ut finibus vestibulum, felis leo pharetra sapien, sit amet faucibus elit diam quis dolor. Maecenas in sodales tellus. Nam lectus lorem, rhoncus id metus ut, venenatis luctus lacus. Nulla tincidunt fermentum dolor vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas fringilla lobortis neque vitae aliquam. Vivamus pulvinar auctor leo nec convallis. Sed risus velit, consequat vel maximus at, facilisis non ipsum. Etiam fermentum mauris sed porta tristique. Aenean fringilla dui sapien, sit amet congue arcu finibus vel.
+        </p>
+        <p>
+        Suspendisse maximus, dui eu interdum interdum, nibh neque lobortis nisl, in scelerisque sapien turpis vel magna. In posuere, tellus quis lobortis fermentum, turpis lorem placerat eros, et laoreet metus libero quis nibh. Nunc posuere nulla ac malesuada finibus. Proin fringilla placerat ligula, non accumsan lorem viverra nec. Sed sit amet eros efficitur, sagittis sapien vel, congue orci. Proin at enim gravida, maximus lorem ut, luctus dolor. Nulla lobortis, libero at elementum fermentum, ligula leo pretium sem, vel hendrerit eros lorem vestibulum justo. Pellentesque quis sodales est, non blandit lacus.
+        </p>
+        <p>
+        Donec hendrerit vehicula elit, convallis tempus tellus dapibus tempus. Sed tempor lorem id urna posuere dictum. Suspendisse vel nulla ut leo facilisis cursus in eu mauris. Donec iaculis ut urna elementum ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus sed aliquet mauris, non varius lorem. In eget blandit diam. Morbi eu dui ut ipsum rutrum mattis eu id lorem. Sed iaculis sollicitudin convallis. Sed rutrum odio vestibulum auctor molestie. Cras vulputate purus ac lectus scelerisque, in aliquam mi semper. Etiam dapibus fermentum dignissim. Sed lobortis odio nibh, vel congue massa ornare ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi sit amet vehicula enim.
+        </p>
+    </ca-cover>
 
-    <x-center>
-        <x-box>
-            Some interesting information
-            <button class="btn btn-primary">Click Me!</button>
-
-            <x-stack>
-                <div>
-                    Stack 1
-                </div>
-                <div>
-                    Stack 2
-                </div>
-            </x-stack>
-
-            <x-sidebar>
-                <div>
-                    <div class="min-w:measure/4">
-                        Sidebar
-                    </div>
-                    <div>
-                        Sidebar Content with <a href="#">some link</a>.
-                        <br>
-                        HTML5 routing
-                        <a href="#top">To top</a>.
-                        <br>
-                        <a href="/about">app/about</a>
-                        <br>
-                        <a href="/about" target="_self">app/about/index.html (hard load)</a>
-                        <br>
-                        <a href="/deep/link?via=content">app/deep/link</a>
-                        <br>
-                        <a href="/index.html" target="_self">app/index.html (hard load)</a>
-                        <br>
-                        Hashrouting
-                        <br>
-                        <a href="#/about">app/#/about</a>
-                        <br>
-                        <a href="#/deep/link?via=main-nav">app/#/deep/link?via=main-nav</a>
-                    </div>
-                </div>
-            </x-sidebar>
-
-        </x-box>
-    </x-center>
-
-    <div style="background: #333; color: white">
-        <x-center>
-            <x-box>
-
-                Some footer content
-
-            </x-box>
-        </x-center>
-    </div>
-
-    <script>
-
-        Core.use(function (Y) {
-            const window = Y.env.window;
-            const document = Y.env.document;
-            const subs = [];
-
-            Y.log("loaded /", Y);
-            window.SOME_GLOBAL = "SOME_GLOBAL";
-
-            subs.push(Y.on("page.load.initiated", function (evt) {
-                document.querySelector(".loading-spinner").style.display = "block";
-            }));
-
-            subs.push(Y.on("page.load.finished", function (evt) {
-                document.querySelector(".loading-spinner").style.display = "none";
-            }));
-
-            subs.push(Y.on("page.unload.initiated", function (evt) {
-                subs.forEach(function (sub) {
-                    sub();
-                });
-            }));
-        });
-
-    </script>
+    <p>Some stuff below the fold</p>
 </body>
 
 </html>

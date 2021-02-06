@@ -75,28 +75,6 @@ x-box {
     outline-offset: calc(var(--border-thin)*-1);
 }
 
-x-cover {
-    display: flex;
-    flex-direction: column;
-    max-width: none;
-    min-height: calc(100vh - 2 * var(--s1));
-    padding: var(--s1);
-}
-x-cover > * {
-    margin-bottom: var(--s1);
-    margin-top: var(--s1);
-}
-x-cover > :first-child:not(.centered) {
-    margin-top: 0;
-}
-x-cover > :last-child:not(.centered) {
-    margin-bottom: 0;
-}
-x-cover > .centered {
-    margin-bottom: auto;
-    margin-top: auto;
-}
-
 x-stack {
     display: flex;
     flex-direction: column;
